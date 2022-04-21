@@ -10,7 +10,7 @@ function bestMove() {
 
         if (cells[i].innerText == '') {
             cells[i].innerText = player2;
-            score = minimax(0, false);
+            score = minimax(0, false, -1000, 1000);
             cells[i].innerText = '';
             if (score > bestScores) {
                 bestScores = score;
@@ -93,10 +93,9 @@ let scores = {
     O: 10,
     Tie: 0
 };
-function minimax(depth, isMaximizing) {
+function minimax(depth, isMaximizing, alpha, beta) {
     const board = document.querySelectorAll('.cell');
     let result = checkForWinner();
-    let score;
     if (result != '') {
         return scores[result];
     }
@@ -106,9 +105,13 @@ function minimax(depth, isMaximizing) {
         for (let i = 0; i < 9; i++) {
             if (board[i].innerText == '') {
                 board[i].innerText = player2;
-                score = minimax(depth + 1, false);
+                let score = minimax(depth + 1, false, alpha, beta);
                 board[i].innerText = '';
                 bestScore = Math.max(score, bestScore);
+                alpha = Math.max(alpha, bestScore);
+
+                if (beta <= alpha)
+                    break;
             }
 
         }
@@ -122,10 +125,13 @@ function minimax(depth, isMaximizing) {
             if (board[i].innerText == '') {
 
                 board[i].innerText = player1;
-                score = minimax(depth + 1, true);
+                let score = minimax(depth + 1, true, alpha, beta);
                 board[i].innerText = '';
                 bestScore = Math.min(score, bestScore);
+                beta = Math.min(beta, bestScore);
 
+                if (beta <= alpha)
+                    break;
             }
 
         }
