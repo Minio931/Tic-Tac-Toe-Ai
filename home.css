@@ -1,0 +1,52 @@
+body{
+    background: #001219;
+    background-image:url("img/XOXO.png");
+    background-repeat: repeat;
+    
+}
+
+#wrapper{
+    width: 600px;
+    height: 600px;
+    background-color: rgba(0, 18, 25, 0.5);
+    
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+input[type=button]{
+    display: block;
+    width: 200px;
+    height: 70px;
+    margin: 20px;
+    background-color: #001219;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+   
+}
+input[type=button]:nth-of-type(1){
+    box-shadow: 2px 2px #00FFDD;
+}
+input[type=button]:nth-of-type(2){
+    box-shadow: 2px 2px #F90716;
+}
+input[type=button]:nth-of-type(1):hover{
+    box-shadow: 2px 2px 20px 10px  #00FFDD;
+    color: #00FFDD;
+    border: 2px solid #00FFDD;
+    transform: scale(1.1);
+}
+input[type=button]:nth-of-type(2):hover{
+    box-shadow: 2px 2px 20px 10px  #F90716;
+    color: #F90716;
+    border: 2px solid #F90716;
+    transform: scale(1.1);
+}

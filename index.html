@@ -5,29 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>TicTacToe</title>
+    <!--fonts-->>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    <!--styles-->
+    <link rel="stylesheet" href="home.css">
+    <title>Document</title>
 </head>
 
 <body>
-    <div id='board'>
-        <button id="cell1" class="cell"></button>
-        <button id="cell2" class="cell"></button>
-        <button id="cell3" class="cell"></button>
-        <button id="cell4" class="cell"></button>
-        <button id="cell5" class="cell"></button>
-        <button id="cell6" class="cell"></button>
-        <button id="cell7" class="cell"></button>
-        <button id="cell8" class="cell"></button>
-        <button id="cell9" class="cell"></button>
-        <div id='gameResult'>
-
+    <div id='wrapper'>
+        <div id='banner'></div>
+        <div id='menu'>
+            <input type="button" value="Play VS Human" onclick="location.href = 'VSHuman/Vshuman.html'">
+            <input type="button" value="Play VS Computer" onclick="location.href = 'VSComputer/VScomputer.html'">
         </div>
     </div>
-
-    <script src="minimax.js"></script>
-    <script src="app.js"></script>
-
 </body>
 
 </html>

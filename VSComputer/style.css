@@ -1,5 +1,8 @@
 body{
     background-color: #001219;
+    background-image:url("../img/XOXO.png");
+    background-repeat: repeat;
+    font-family: 'Roboto', sans-serif;
 }
 
 #board{

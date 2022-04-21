@@ -21,34 +21,28 @@ const winConditions = [
 ]
 let playersRound = true;
 
-
-
 function game() {
+
 
     for (let cell of cells) {
 
         cell.addEventListener('click', () => {
-
-            if (!cell.innerText) {
+            if (!cell.innerText && playersRound) {
                 cell.classList.toggle('cross');
                 cell.innerText = player1;
+                playersRound = false;
+                checkForWin(player1);
+            }
+            else if (!cell.innerText && !playersRound) {
+                cell.classList.toggle('nought');
+                cell.innerText = player2;
                 playersRound = true;
-                if (checkForWin(player1)) {
-                    return gameState(player1, "Win");
-                }
-
-                bestMove();
-                if (checkForWin(player2)) {
-                    return gameState(player2, "Win")
-                }
-
-
-
+                checkForWin(player2);
             }
         });
     }
-}
 
+}
 
 function checkForWin(player) {
     let winCount = 0;
@@ -61,13 +55,21 @@ function checkForWin(player) {
             }
         }
         if (winCount == 3) {
-            return true;
+            return endGame(true, player);
         }
     }
     return checkForTie();
 
 }
 
+//Teoretycznie mozna to wyjebać ale mi się narazie nie chce działa działa
+function endGame(condition, player) {
+
+    if (condition) {
+        gameState(player, "Win");
+    }
+
+}
 
 function checkForTie() {
     let total = 0;
@@ -77,9 +79,9 @@ function checkForTie() {
         }
     }
     if (total == 9) {
-        return gameState('Game', 'Tied');
+        gameState("Game", "Tied")
     } else {
-        return false;
+        return 0;
     }
 }
 
@@ -103,7 +105,6 @@ const origBoard = () => {
     resetButton.disabled = true;
 
     playersRound = true;
-    game();
 }
 
 function gameState(player, state) {
@@ -114,6 +115,9 @@ function gameState(player, state) {
     resetButton.innerText = "Restart";
     quitButton.innerText = "Quit";
     resetButton.disabled = false;
+    quitButton.addEventListener('click', () => {
+        location.href = "../index.html";
+    })
     resetButton.addEventListener('click', origBoard);
     for (let btn of cells) {
         btn.disabled = true;
@@ -127,9 +131,7 @@ function gameState(player, state) {
     gameResult.appendChild(quitButton);
     gameResult.style.visibility = 'visible';
     gameResult.style.opacity = '1';
-
-    return 0;
-
+    return 1;
 }
 
 
